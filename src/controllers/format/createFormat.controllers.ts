@@ -10,6 +10,7 @@ export default class CreateFormatController {
       const createFormatService = new CreateFormatService();
       const { name, code } = req.body;
       const format = await createFormatService.execute({ name, code });
+      console.log("This is format =>" + format);
       if (format) {
         return res.status(200).json({ success: true, data: format });
       }

@@ -9,7 +9,7 @@ export default class ListFormatController {
     try {
       const formatRepository = getCustomRepository(FormatRepository);
       const formatModel = getRepository(Format);
-      const formats = await formatModel.find();
+      const formats = await formatRepository.find();
 
       if (formats.length > 0) {
         return res.status(200).json({ success: true, data: formats });

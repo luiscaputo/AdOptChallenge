@@ -11,13 +11,15 @@ export default class DeleteFormatService {
         throw new Error("No format Registred");
       }
 
-      const RMformat = await formatRepository
-        .createQueryBuilder()
-        .delete()
-        .where("id = id", { id: id })
-        .execute();
+      // const RMformat = await formatRepository
+      //   .createQueryBuilder()
+      //   .delete()
+      //   .where("id = id", { id: id })
+      //   .execute();
 
-      return RMformat;
+      await formatRepository.delete(id);
+
+      return "Format Delected.";
     } catch (err: any) {
       return err.message;
     }
