@@ -2,7 +2,7 @@ import { Router, Request, Response } from "express";
 
 const router = Router();
 
-router.get("/", async (_: Request, res: Response) => {
+router.get("/", async (__: Request, res: Response) => {
   return res.send({
     Author: "Luís Afonso Caputo",
     Summary: "AdOpt - Challenge",

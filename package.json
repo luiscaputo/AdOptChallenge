@@ -23,6 +23,7 @@
     "reflect-metadata": "^0.1.13",
     "ts-node-dev": "^1.1.8",
     "typeorm": "^0.2.41",
+    "typeorm-model-generator": "^0.4.6",
     "yup": "^0.32.11"
   },
   "devDependencies": {
