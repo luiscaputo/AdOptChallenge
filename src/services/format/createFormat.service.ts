@@ -18,19 +18,11 @@ export default class CreateFormatService {
         throw new Error("Already Exists one format with this code.");
       }
 
-      console.log("This is format =>" + format);
+      formatModel.name = name;
+      formatModel.code = code;
+      formatRepository.save(formatModel);
 
-      const createFormat = formatRepository.create({
-        name,
-        code,
-      });
-
-      // formatModel.name = name;
-      // formatModel.code = code;
-      // formatRepository.save(formatModel);
-
-      await formatRepository.save(createFormat);
-      return createFormat;
+      return formatModel;
     } catch (err: any) {
       throw new Error(err.message);
     }
