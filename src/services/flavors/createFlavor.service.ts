@@ -7,7 +7,7 @@ export interface IFlavors {
   code: string;
 }
 
-export default class FlavorsServices {
+export default class CreateFlavorService {
   async execute({ name, code }: IFlavors) {
     try {
       const flavorsRepository = getCustomRepository(FlavorsRepository);
@@ -24,7 +24,7 @@ export default class FlavorsServices {
 
       return flavorModel;
     } catch (err: any) {
-      return err.message;
+      throw new Error(err.message);
     }
   }
 }

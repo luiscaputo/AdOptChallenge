@@ -8,8 +8,8 @@ export default class DeleteFlavorController {
     res: Response<AppResponse<string>>
   ): Promise<any> {
     try {
-      const createFlavorService = new DeleteFlavorsService();
-      const flavor = await createFlavorService.execute(req.params);
+      const deleteFlavorService = new DeleteFlavorsService();
+      const flavor = await deleteFlavorService.execute(req.params);
       if (flavor) {
         return res.status(200).json({ success: true, message: flavor });
       }
