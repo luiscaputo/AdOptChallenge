@@ -3,6 +3,7 @@ import formateRoutes from "./routes/format.routes";
 import flavorsRoutes from "./routes/flavors.routes";
 import boxRoutes from "./routes/box.routes";
 import cookiesRoutes from "./routes/cookie.routes";
+import cookiesBoxRoutes from "./routes/cookiesBox.routes";
 
 const router = Router();
 
@@ -20,5 +21,6 @@ router.use(boxRoutes);
 router.use(formateRoutes);
 router.use(flavorsRoutes);
 router.use(cookiesRoutes);
+router.use(cookiesBoxRoutes);
 
 export default router;

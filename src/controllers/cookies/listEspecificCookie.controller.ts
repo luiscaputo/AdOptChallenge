@@ -19,7 +19,7 @@ export default class ListEspecificCookieController {
         .status(400)
         .json({ success: false, message: "Invalid CookieId. Try Again." });
     } catch (err: any) {
-      return err.message;
+      return res.status(500).json({ success: false, message: err.message });
     }
   }
 }
