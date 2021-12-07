@@ -40,11 +40,11 @@ export default class CreateCookieService {
         throw new Error("This Cookie Flavor Not Exists.");
       }
 
-      const cookieExists = await cookieRepository.query(
-        `SELECT * FROM cookies WHERE name = '${name}' and formatId = '${formatId} and flavorId = '${flavorId}''`
-      );
-      if(cookieExists){
-        throw new Error("Already Exists one cookie with this name, format and flavor.")
+      const cookieExists = await cookieRepository.findOne({ where: { name } });
+      if (cookieExists) {
+        throw new Error(
+          "Already Exists one cookie with this name, format and flavor."
+        );
       }
 
       const centavo = price / 100;
