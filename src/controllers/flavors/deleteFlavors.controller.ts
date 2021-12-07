@@ -10,9 +10,11 @@ export default class DeleteFlavorController {
     try {
       const deleteFlavorService = new DeleteFlavorsService();
       const flavor = await deleteFlavorService.execute(req.params);
+
       if (flavor) {
         return res.status(200).json({ success: true, message: flavor });
       }
+      
       return res
         .status(400)
         .json({ success: false, message: "Invalid flavor. Try Again." });

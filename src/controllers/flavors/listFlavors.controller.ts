@@ -15,7 +15,7 @@ export default class ListFlavorsController {
       } else if (flavors.length < 0) {
         return res
           .status(400)
-          .json({ success: false, message: "Format not found" });
+          .json({ success: false, message: "Flavor not found" });
       }
     } catch (err: any) {
       return res.status(500).json({ success: false, message: err.message });

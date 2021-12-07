@@ -2,6 +2,7 @@ import { Router, Request, Response } from "express";
 import formateRoutes from "./routes/format.routes";
 import flavorsRoutes from "./routes/flavors.routes";
 import boxRoutes from "./routes/box.routes";
+import cookiesRoutes from "./routes/cookie.routes";
 
 const router = Router();
 
@@ -15,8 +16,9 @@ router.get("/", async (__: Request, res: Response) => {
   });
 });
 
+router.use(boxRoutes);
 router.use(formateRoutes);
 router.use(flavorsRoutes);
-router.use(boxRoutes);
+router.use(cookiesRoutes);
 
 export default router;

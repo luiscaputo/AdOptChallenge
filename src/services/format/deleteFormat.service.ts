@@ -15,7 +15,7 @@ export default class DeleteFormatService {
 
       return "Format Delected.";
     } catch (err: any) {
-      return err.message;
+      throw new Error(err.message);
     }
   }
 }
