@@ -17,7 +17,6 @@ export const createCookie = async (
     price: Yup.number().required("Informe o Valor do Cookie."),
     description: Yup.string()
       .required("Descreva o Cookie.")
-      .min(35, "Descreva no mínimo com 35 digitos.")
       .max(35, "Descreva no máximo com 35 digitos."),
   });
   await showError(req, res, next, schema);

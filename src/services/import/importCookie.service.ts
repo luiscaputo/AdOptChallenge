@@ -23,7 +23,10 @@ export default class ImportCookieService {
       const format = cookie.format.code;
       const flavor = cookie.flavor.code;
 
-      const infos = `${flavor}${format}${createdAt}${price}${description}.`;
+      const dataInFile = fs.readFileSync("src/aco/ACO.txt");
+
+      const infos = `${flavor}${format}${createdAt}${price}${description}
+${dataInFile}`;
 
       return fs.writeFileSync("src/aco/ACO.txt", infos);
     } catch (err: any) {
