@@ -11,11 +11,11 @@ export const createFormat = async (
   next: NextFunction
 ) => {
   const schema = Yup.object().shape({
-    nome: Yup.string().required("Informe o nome do formato."),
+    name: Yup.string().required("Informe o nome do formato."),
     code: Yup.string()
       .required("Informe o código do formato.")
-      .min(6, "O formato deve ter no minimo 6 digitos")
-      .max(6, "O formato deve ter no máximo 6 digitos"),
+      .min(6, "O Código do formato deve ter no minimo 6 digitos")
+      .max(6, "O Código do formato deve ter no máximo 6 digitos"),
   });
   await showError(req, res, next, schema);
 };
