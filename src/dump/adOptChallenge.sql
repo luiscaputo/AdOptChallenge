@@ -2,8 +2,8 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Tempo de geração: 06-Dez-2021 às 17:04
+-- Host: localhost
+-- Tempo de geração: 08-Dez-2021 às 03:52
 -- Versão do servidor: 10.4.21-MariaDB
 -- versão do PHP: 8.0.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `adoptchallenge`
+-- Banco de dados: `adOptChallenge`
 --
 
 -- --------------------------------------------------------
@@ -34,6 +34,13 @@ CREATE TABLE `box` (
   `createdAt` datetime NOT NULL DEFAULT current_timestamp(),
   `updatedAt` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `box`
+--
+
+INSERT INTO `box` (`id`, `name`, `description`, `createdAt`, `updatedAt`) VALUES
+(1, 'teste', 'Lorem ishashuaaaa', '2021-12-06 23:52:32', '2021-12-06 23:52:32');
 
 -- --------------------------------------------------------
 
@@ -52,6 +59,14 @@ CREATE TABLE `cookies` (
   `updatedAt` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Extraindo dados da tabela `cookies`
+--
+
+INSERT INTO `cookies` (`id`, `name`, `formatId`, `flavorId`, `price`, `description`, `createdAt`, `updatedAt`) VALUES
+(1, 'teste', 1, 1, 1, 'My First Cookie', '2021-12-07 19:47:19', '2021-12-07 19:47:19'),
+(3, 'teste3', 1, 1, 1, 'ccccccccccccccccccccccccccccccccccc', '2021-12-08 02:19:35', '2021-12-08 02:19:35');
+
 -- --------------------------------------------------------
 
 --
@@ -66,6 +81,14 @@ CREATE TABLE `cookiesbox` (
   `updatedAt` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Extraindo dados da tabela `cookiesbox`
+--
+
+INSERT INTO `cookiesbox` (`id`, `cookieId`, `boxId`, `createdAt`, `updatedAt`) VALUES
+(1, 1, 1, '2021-12-07 23:59:41', '2021-12-07 23:59:41'),
+(2, 1, 1, '2021-12-07 23:59:51', '2021-12-07 23:59:51');
+
 -- --------------------------------------------------------
 
 --
@@ -79,6 +102,14 @@ CREATE TABLE `flavors` (
   `createdAt` datetime NOT NULL DEFAULT current_timestamp(),
   `updatedAt` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `flavors`
+--
+
+INSERT INTO `flavors` (`id`, `name`, `code`, `createdAt`, `updatedAt`) VALUES
+(1, 'teste', 'teste', '2021-12-06 23:26:41', '2021-12-06 23:26:41'),
+(3, 'teste', 'testee', '2021-12-08 03:43:09', '2021-12-08 03:43:09');
 
 -- --------------------------------------------------------
 
@@ -99,7 +130,9 @@ CREATE TABLE `format` (
 --
 
 INSERT INTO `format` (`id`, `name`, `code`, `createdAt`, `updatedAt`) VALUES
-(1, 'teste', 'testee', '2021-12-06 12:52:03', '2021-12-06 12:52:03');
+(1, 'teste', 'testee', '2021-12-06 12:52:03', '2021-12-06 12:52:03'),
+(3, 'teste', 'teste', '2021-12-06 22:23:12', '2021-12-06 22:23:12'),
+(4, 'teste', 'teste2', '2021-12-08 03:42:11', '2021-12-08 03:42:11');
 
 --
 -- Índices para tabelas despejadas
@@ -147,31 +180,31 @@ ALTER TABLE `format`
 -- AUTO_INCREMENT de tabela `box`
 --
 ALTER TABLE `box`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `cookies`
 --
 ALTER TABLE `cookies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `cookiesbox`
 --
 ALTER TABLE `cookiesbox`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `flavors`
 --
 ALTER TABLE `flavors`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `format`
 --
 ALTER TABLE `format`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restrições para despejos de tabelas
@@ -181,15 +214,15 @@ ALTER TABLE `format`
 -- Limitadores para a tabela `cookies`
 --
 ALTER TABLE `cookies`
-  ADD CONSTRAINT `cookies_ibfk_1` FOREIGN KEY (`formatId`) REFERENCES `format` (`id`),
-  ADD CONSTRAINT `cookies_ibfk_2` FOREIGN KEY (`flavorId`) REFERENCES `flavors` (`id`);
+  ADD CONSTRAINT `FK_dee76a82c17b92e42d2233fa97c` FOREIGN KEY (`flavorId`) REFERENCES `flavors` (`id`),
+  ADD CONSTRAINT `FK_e005f5ec8b3d9e0f3ec0265e04d` FOREIGN KEY (`formatId`) REFERENCES `format` (`id`);
 
 --
 -- Limitadores para a tabela `cookiesbox`
 --
 ALTER TABLE `cookiesbox`
-  ADD CONSTRAINT `cookiesbox_ibfk_1` FOREIGN KEY (`cookieId`) REFERENCES `cookies` (`id`),
-  ADD CONSTRAINT `cookiesbox_ibfk_2` FOREIGN KEY (`boxId`) REFERENCES `box` (`id`);
+  ADD CONSTRAINT `FK_abd498af1a56f901eee8be7cd75` FOREIGN KEY (`cookieId`) REFERENCES `cookies` (`id`),
+  ADD CONSTRAINT `FK_cc7fe1cc33a5211afcf56d4e40b` FOREIGN KEY (`boxId`) REFERENCES `box` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
