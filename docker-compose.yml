@@ -1,0 +1,11 @@
+version: '3.7'
+
+services:
+  app:
+    container_name: AdOptChallenge
+    restart: always
+    build: .
+    volumes:
+      - .:/usr/adOptChallenge/src
+    ports:
+      - 8080:8080
